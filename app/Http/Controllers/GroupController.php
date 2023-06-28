@@ -74,48 +74,54 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function deleteScreen(Group $group)
     {
-        //
+        return view('group_delete_sure', compact('group'));
     }
 
-    public function inviteUsers(string $id, Request $request)
+    public function destroy(string $groupId)
     {
-        $group = Group::findOrFail($id);
-        $searchQuery = $request->input('search_query');
-
-        // Retrieve the top 20 users if no search query is provided
-        if (empty($searchQuery)) {
-            $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
-                ->orderBy('id', 'desc')
-                ->take(20)
-                ->get();
-        } else {
-            // Retrieve users based on the search query, excluding the authenticated user
-            $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
-                ->where('name', 'like', '%' . $searchQuery . '%')
-                ->get();
-        }
-
-        return view('group_invite_users', compact('group', 'users', 'searchQuery'));
+        Group::findOrfail($groupId)->delete();
+        return redirect()->route('indexGroups');
     }
 
+    // public function inviteUsers(string $id, Request $request)
+    // {
+    //     $group = Group::findOrFail($id);
+    //     $searchQuery = $request->input('search_query');
 
-    public function storeUser(Group $group, User $user)
-    {
-        $group->members()->attach($user);
-        return back();
-    }
-    public function showMembers(string $id)
-    {
-        $group = Group::findOrFail($id);
-        $members = $group->members->reject(function ($member) {
-            return $member->id === auth()->user()->id;
-        });
+    //     // Retrieve the top 20 users if no search query is provided
+    //     if (empty($searchQuery)) {
+    //         $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
+    //             ->orderBy('id', 'desc')
+    //             ->take(20)
+    //             ->get();
+    //     } else {
+    //         // Retrieve users based on the search query, excluding the authenticated user
+    //         $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
+    //             ->where('name', 'like', '%' . $searchQuery . '%')
+    //             ->get();
+    //     }
+
+    //     return view('group_invite_users', compact('group', 'users', 'searchQuery'));
+    // }
+
+
+    // public function storeUser(Group $group, User $user)
+    // {
+    //     $group->members()->attach($user);
+    //     return back();
+    // }
+    // public function showMembers(string $id)
+    // {
+    //     $group = Group::findOrFail($id);
+    //     $members = $group->members->reject(function ($member) {
+    //         return $member->id === auth()->user()->id;
+    //     });
 
         
 
-        return view('group_members', compact('members', 'group'));
+    //     return view('group_members', compact('members', 'group'));
 
-    }
+    // }
 }

@@ -34,9 +34,13 @@ Route::post('/group/store', [GroupController::class, 'store'])->name('storeGroup
 //change later to to-do index from group show
 Route::get('/group/{group}', [GroupController::class, 'show'])->name('showGroup');
 
+Route::delete('/group/{groupId}', [GroupController::class, 'destroy'])->name('deleteGroup');
+
 Route::get('/group/{group}/members', [Group_UserController::class, 'index'])->name('indexMembers');
 
 Route::post('/invites/{invite}/store', [Group_UserController::class, 'store'])->name('storeMember');
+
+Route::get('/group/{group}/delete', [GroupController::class, 'deleteScreen'])->name('deleteScreen');
 
 Route::delete('/group/{groupId}/member/{userId}', [Group_UserController::class, 'destroy'])->name('deleteMember'); 
 
