@@ -9,30 +9,47 @@ use App\Models\User;
 use App\Models\Invite;
 use App\Models\To_do;
 
-class UserController extends Controller
+class To_DoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Group $group)
     {
-        //
-    }
+        $members = $group->Members->reject(function ($user) {
+            return $user->id === auth()->user()->id;
+        });
+
+    return view('to-do_new', compact('group', 'members'));
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Group $group, Request $request)
     {
-        //
+        $madeBy = auth()->user();
+        
+        $to_do = new To_do();
+        $to_do->name = $request->to_do_name;
+        $to_do->description = $request->to_do_description;
+        $to_do->for_id = $request->for_id;
+        $to_do->by_id = $request->by_id;
+
+
+        $to_do->save();
+    
+    
+        return view('group_show', compact('group'));
     }
 
     /**
@@ -66,11 +83,4 @@ class UserController extends Controller
     {
         //
     }
-
-    public function isMember($groupId, $userId)
-    {
-        $group = Group::findOrFail($groupId);
-        return $group->members->contains('id', $userId);
-    }
-
 }

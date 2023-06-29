@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Group extends Model
 {
     use HasFactory;
@@ -19,5 +21,10 @@ class Group extends Model
     public function MadeBy()
     {
         return $this->belongsTo(User::class, 'madeBy_id');
+    }
+
+    public function todos()
+    {
+        return $this->hasMany(Todo::class, 'group_id');
     }
 }

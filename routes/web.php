@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Group_UserController;
 use App\Http\Controllers\InviteController;
+use App\Http\Controllers\To_DoController;
+
 
 
 
@@ -44,8 +46,6 @@ Route::get('/group/{group}/delete', [GroupController::class, 'deleteScreen'])->n
 
 Route::delete('/group/{groupId}/member/{userId}', [Group_UserController::class, 'destroy'])->name('deleteMember'); 
 
-
-
 Route::get('/group/{group}/invite-users/create', [InviteController::class, 'create'])->name('createInvite');
 
 Route::post('/group/{group}/invite-user', [InviteController::class, 'store'])->name('storeInvite');
@@ -53,6 +53,12 @@ Route::post('/group/{group}/invite-user', [InviteController::class, 'store'])->n
 Route::get('/invites', [InviteController::class, 'index'])->name('indexInvites');
 
 Route::delete('/invite/{invite}', [InviteController::class, 'destroy'])->name('deleteInvite'); 
+
+Route::get('/group/{group}/to-do/create', [To_DoController::class, 'create'])->name('createTo-Do');
+
+Route::post('/group/{group}/to-do/store', [To_DoController::class, 'store'])->name('storeTo-Do');
+
+
 
 
 // Route::resource('/groups',[GroupController::class]);

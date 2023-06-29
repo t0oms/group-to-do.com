@@ -79,27 +79,6 @@
             </table>
          </div>
 
-            {{-- <div class="px-2 flex items-center space-x-4 mb-4 min-h-[20%] max-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">
-               <div class="flex-1 min-w-0">
-                  <p class="self-end text-sm text-gray-500 whitespace: nowrap">made by:</p>
-                  <p class="inline whitespace: nowrap text-sm font-medium text-gray-900 truncate">user56789asdfasdfasdfa0</p>
-                  <p class="self-end content-end text-sm text-gray-500">for:</p>
-                  <p class="inline text-sm font-medium text-gray-900 ">T</p>
-               </div>
-               <div class="max-w-3xl flxe-1 border-2 shrink-0">
-               </div>
-               <button type="button" class="basis-1/12 self-center h-8 w-8 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2">
-                  <span class="sr-only">Icon description</span>
-                </button>
-            </div>
-            <div class=" mb-4 min-h-[20%] max-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">1</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">2</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">3</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">4</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">5</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">6</div>
-            <div class=" mb-4 min-h-[20%] max-w-3xl shadow-md sm:rounded-lg bg-white">7</div>
-            <div class="max-w-3xl relative overflow-x-auto shadow-md sm:rounded-lg"> --}}
           </div>
         </div>
         @if ($group->MadeBy->id === auth()->user()->id)
@@ -108,7 +87,7 @@
                     <span class="flex-1 whitespace-nowrap">Delete Group</span>
                 </a>
 
-                <a href="{{ route('createInvite', $group) }}"" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
+                <a href="{{ route('createTo-Do', $group) }}"" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
                     <span class="flex-1 whitespace-nowrap">Create To-Do</span>
                 </a>
             </div>

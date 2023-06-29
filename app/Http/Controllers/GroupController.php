@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Group;
 use App\Models\User;
+use App\Models\Invite;
+use App\Models\To_do;
 
 class GroupController extends Controller
 {
@@ -24,8 +27,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('group_new', compact('users'));
+        return view('group_new');
     }
 
     /**

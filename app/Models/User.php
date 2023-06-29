@@ -62,4 +62,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Group::class, 'madeBy_id');
     }
+
+    public function todos()
+    {
+        return $this->hasMany(Todo::class, 'for_id');
+    }
+
+    public function createdTodos()
+    {
+        return $this->hasMany(Todo::class, 'by_id');
+    }
 }
