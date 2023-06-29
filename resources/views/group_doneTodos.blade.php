@@ -104,6 +104,9 @@
                   </table>
                </div>
             @empty
+            <div class="max-w-3xl shadow-md sm:rounded-lg bg-white mb-4 border-2 p-2">There are no To-Dos</div>
+
+
             @endforelse
           </div>
         </div>
