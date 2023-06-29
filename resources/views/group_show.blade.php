@@ -91,10 +91,12 @@
                               <?php if($todo->forUser->id === auth()->user()->id): ?>
                                  
                               <form method="POST" action="{{ route('checkTo-Do', ['todo' => $todo]) }}">
-                                 <button type="submit"  class="text-white border-2  focus:ring-blue-500 border-gray-500 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
+                                 <button type="submit"  class="text-white border-2  focus:ring-blue-700 border-gray-500 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
                                  @csrf
                               </form>
 
+                              <?php else: ?>
+                                 <button type="button" disabled class="text-white border-2  border-gray-500 bg-gray-400  font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
                               <?php endif; ?>
                            </td>
                         </tr>

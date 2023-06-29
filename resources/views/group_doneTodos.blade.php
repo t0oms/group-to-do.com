@@ -95,6 +95,8 @@
                                  @csrf
                               </form>
 
+                              <?php else: ?>
+                                <button type="submit"  class="text-white border-2  focus:ring-blue-500 border-gray-500 bg-blue-800 hover:bg-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
                               <?php endif; ?>
                            </td>
                         </tr>
