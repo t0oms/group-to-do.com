@@ -49,7 +49,7 @@ class TodoController extends Controller
         $to_do->save();
     
     
-        return view('group_show', compact('group'));
+        return redirect()->route('showGroup', $group);
     }
 
     /**

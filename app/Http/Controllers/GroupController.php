@@ -54,7 +54,8 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        return view('group_show', compact('group'));
+        $todos = $group->todos;
+        return view('group_show', compact('group', 'todos'));
     }
 
     /**

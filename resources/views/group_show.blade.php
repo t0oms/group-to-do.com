@@ -43,42 +43,48 @@
           </aside>
           
           <div class="flex-auto flex flex-col-reverse overflow-auto h-full p-10 border-2 shadow-inner sm:rounded-lg bg-gray-200">
-            <div class="max-w-3xl shadow-md sm:rounded-lg bg-white">
-               <table class=" text-sm text-left text-gray-500">
-                  <tbody>
-                     <tr class="">
-                        <div>
-                        <th scope="row" class="px-3 py-4 font-medium text-gray-900 w-3/12">
-                           <p class="line-clamp-2">
-                              Apple MacBook Pro 17" On the other hand, we On the other hand, we
-                           </p>
-                        </th>
-                        <td class="px-3 py-4 w-5/12">
-                           <p class="line-clamp-3">
-                              On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire
-                           </p>
+            @forelse ($todos as $todo)
+               <div class="max-w-3xl shadow-md sm:rounded-lg bg-white mb-4">
+                  <table class=" text-sm text-left text-gray-500">
+                     <tbody>
+                        <tr class="">
+                           <div>
+                           <th scope="row" class="px-3 py-4 font-medium text-gray-900 w-3/12">
+                              <p class="line-clamp-2">
+                                 {{ $todo->name }}
+                              </p>
+                           </th>
+                           <td class="px-3 py-4 w-5/12">
+                              <p class="line-clamp-3">
+                                 {{ $todo->description }}
+                              </p>
+                              </td>
+                           <td class="px-3 py-4 w-2/12">
+                                 <div class="flex-1 min-w-0">
+                                 <p class="self-end text-sm text-gray-500">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->createdBy->name }}</span></p>
+                                 <p class="self-end text-sm text-gray-500 ">for: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->forUser->name }}</span></p>
+                           </div>
                            </td>
-                        <td class="px-3 py-4 w-2/12">
-                              <div class="flex-1 min-w-0">
-                              <p class="self-end text-sm text-gray-500">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">user</span></p>
-                              <p class="self-end text-sm text-gray-500 ">for: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">Toms</span></p>
-                        </div>
-                        </td>
-                        
-                        <td class="px-3 py-4 w-1/12">
-                              <a href="#" class="font-medium text-blue-60 hover:underline">Edit</a>
-                        </td>
-                        <td class="w-1/12 p-4">
-                              <div class="flex items-center">
-                                 <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                 <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                              </div>
-                        </td>
-                     </tr>
-                  </tbody>
-            </table>
-         </div>
-
+                           
+                           <td class="px-3 py-4 w-1/12">
+                                 <div>
+                                    <a href="#" class="font-medium text-blue-60 hover:underline">Open</a>
+                                    <a href="#" class="font-medium text-blue-60 hover:underline">Edit</a>
+                                    <a href="#" class="font-medium text-blue-60 hover:underline">Delete</a>
+                                 </div>
+                           </td>
+                           <td class="w-1/12 p-4">
+                                 <div class="flex items-center">
+                                    <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                 </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            @empty
+            @endforelse
           </div>
         </div>
         
