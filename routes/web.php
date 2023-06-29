@@ -34,7 +34,7 @@ Route::get('/group/create', [GroupController::class, 'create'])->name('createGro
 Route::post('/group/store', [GroupController::class, 'store'])->name('storeGroup');
 
 //change later to to-do index from group show
-Route::get('/group/{group}', [GroupController::class, 'show'])->name('showGroup');
+Route::get('/group/{group}/', [GroupController::class, 'show'])->name('showGroup');
 
 Route::delete('/group/{groupId}', [GroupController::class, 'destroy'])->name('deleteGroup');
 
@@ -59,6 +59,18 @@ Route::get('/group/{group}/to-do/create', [TodoController::class, 'create'])->na
 Route::post('/group/{group}/to-do/store', [TodoController::class, 'store'])->name('storeTo-Do');
 
 Route::delete('/to-do/{todo}', [TodoController::class, 'destroy'])->name('deleteTo-Do');
+
+Route::get('/to-do/{todo}/edit', [TodoController::class, 'edit'])->name('editTo-Do');
+
+Route::post('/to-do/{todo}/update', [TodoController::class, 'update'])->name('updateTo-Do');
+
+Route::post('/to-do/{todo}/check', [TodoController::class, 'check'])->name('checkTo-Do');
+
+Route::post('/to-do/{todo}/uncheck', [TodoController::class, 'uncheck'])->name('uncheckTo-Do');
+
+Route::get('/group/{group}/done-to-dos', [GroupController::class, 'indexDoneTodos'])->name('indexDoneTodos');
+
+
 
 
 

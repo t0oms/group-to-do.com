@@ -23,7 +23,7 @@
              <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
                 <ul class="space-y-2 font-medium">
                    <li>
-                      <a href="{{ URL::route('showGroup', $group); }}" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-200">
+                      <a href="{{ URL::route('showGroup', $group); }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200">
                          <span class="text-center">To-Dos</span>
                       </a>
                    </li>
@@ -33,7 +33,7 @@
                       </a>
                    </li>
                    <li>
-                      <a href="{{ URL::route('indexDoneTodos', $group); }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200">
+                      <a href="{{ URL::route('indexDoneTodos', $group); }}" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-200">
                          <span>Done To-Dos</span>
                       </a>
                    </li>
@@ -67,8 +67,8 @@
                               </td>
                            <td class="px-3 py-4 w-2/12">
                                  <div class="flex-1 min-w-0">
-                                 <p class="self-end text-sm text-gray-500 mb-4">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->createdBy->name }}</span></p>
-                                 <p class="self-end text-sm text-gray-500 ">for: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->forUser->name }}</span></p>
+                                 <p class="self-end text-sm text-gray-500 mb-4 ">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->createdBy->name }}</span></p>
+                                 <p class="self-end text-sm text-gray-500 text-left">for: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->forUser->name }}</span></p>
                            </div>
                            </td>
                            
@@ -90,8 +90,8 @@
                            <td class="w-1/12 p-4">
                               <?php if($todo->forUser->id === auth()->user()->id): ?>
                                  
-                              <form method="POST" action="{{ route('checkTo-Do', ['todo' => $todo]) }}">
-                                 <button type="submit"  class="text-white border-2  focus:ring-blue-500 border-gray-500 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
+                              <form method="POST" action="{{ route('uncheckTo-Do', ['todo' => $todo]) }}">
+                                 <button type="submit"  class="text-white border-2  focus:ring-blue-500 border-gray-500 bg-blue-800 hover:bg-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"></button>
                                  @csrf
                               </form>
 

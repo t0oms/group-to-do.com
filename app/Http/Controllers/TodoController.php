@@ -35,9 +35,7 @@ class TodoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Group $group, Request $request)
-    {
-        $madeBy = auth()->user();
-        
+    {  
         $to_do = new Todo();
         $to_do->name = $request->to_do_name;
         $to_do->description = $request->to_do_description;
@@ -65,15 +63,23 @@ class TodoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        return view('todo_edit', compact('todo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {        
+        $todo = Todo::findOrFail($id);
+        $todo->name = $request->to_do_name;
+        $todo->description = $request->to_do_description;
+
+        $todo->save();
+    
+    
+        return redirect()->route('showGroup', $todo->group);
     }
 
     /**
@@ -83,5 +89,23 @@ class TodoController extends Controller
     {
         Todo::findOrfail($id)->delete();
         return back();
+    }
+
+    public function check(string $id)
+    {        
+        $todo = Todo::findOrFail($id);
+        $todo->status = true;
+        $todo->save();
+    
+        return redirect()->route('showGroup', $todo->group);
+    }
+
+    public function uncheck(string $id)
+    {        
+        $todo = Todo::findOrFail($id);
+        $todo->status = false;
+        $todo->save();
+    
+        return redirect()->route('indexDoneTodos', $todo->group);
     }
 }

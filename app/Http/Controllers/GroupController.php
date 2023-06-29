@@ -54,9 +54,16 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        $todos = $group->todos;
+        $todos = $group->todos()->where('status', false)->get();
         return view('group_show', compact('group', 'todos'));
     }
+
+    public function indexDoneTodos(Group $group)
+    {
+        $todos = $group->todos()->where('status', true)->get();
+        return view('group_doneTodos', compact('group', 'todos'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
