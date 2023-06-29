@@ -81,17 +81,24 @@
 
           </div>
         </div>
-        @if ($group->MadeBy->id === auth()->user()->id)
+        
             <div class="flex-none flex justify-between pl-8">
-                <a href="{{ route('deleteScreen', $group) }}"" class="  text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
-                    <span class="flex-1 whitespace-nowrap">Delete Group</span>
-                </a>
-
-                <a href="{{ route('createTo-Do', $group) }}"" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
-                    <span class="flex-1 whitespace-nowrap">Create To-Do</span>
-                </a>
+               <?php if($group->MadeBy->id === auth()->user()->id): ?>
+                  <a href="{{ route('deleteScreen', $group) }}"" class="  text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
+                     <span class="flex-1 whitespace-nowrap">Delete Group</span>
+                  </a>
+                <?php else: ?>
+                  <div></div>
+                <?php endif; ?>
+               
+                <?php if($group->Members->count() !== 1): ?>
+                  <a href="{{ route('createTo-Do', $group) }}"" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
+                     <span class="flex-1 whitespace-nowrap">Create To-Do</span>
+                  </a>
+                <?php else: ?>
+                  <div></div>
+                <?php endif; ?>
             </div>
-        @endif
     </div>
 </body>
 
