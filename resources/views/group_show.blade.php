@@ -44,7 +44,13 @@
           
           <div class="flex-auto flex flex-col-reverse overflow-auto h-full p-10 border-2 shadow-inner sm:rounded-lg bg-gray-200">
             @forelse ($todos as $todo)
+            <?php if($todo->createdBy->id === auth()->user()->id): ?>
+               <div class="max-w-3xl shadow-md sm:rounded-lg bg-white mb-4 border-2 border-green-500">
+            <?php elseif($todo->forUser->id === auth()->user()->id): ?>
+               <div class="max-w-3xl shadow-md sm:rounded-lg bg-white mb-4 border-2 border-red-500">
+            <?php else: ?>
                <div class="max-w-3xl shadow-md sm:rounded-lg bg-white mb-4">
+            <?php endif; ?>
                   <table class=" text-sm text-left text-gray-500">
                      <tbody>
                         <tr class="">
@@ -61,23 +67,33 @@
                               </td>
                            <td class="px-3 py-4 w-2/12">
                                  <div class="flex-1 min-w-0">
-                                 <p class="self-end text-sm text-gray-500">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->createdBy->name }}</span></p>
+                                 <p class="self-end text-sm text-gray-500 mb-4">made by: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->createdBy->name }}</span></p>
                                  <p class="self-end text-sm text-gray-500 ">for: <span class=" whitespace: nowrap text-sm font-medium text-gray-900 self-end">{{ $todo->forUser->name }}</span></p>
                            </div>
                            </td>
                            
                            <td class="px-3 py-4 w-1/12">
                                  <div>
-                                    <a href="#" class="font-medium text-blue-60 hover:underline">Open</a>
-                                    <a href="#" class="font-medium text-blue-60 hover:underline">Edit</a>
-                                    <a href="#" class="font-medium text-blue-60 hover:underline">Delete</a>
+                                    <a href="#" class="text-green-700 hover:text-white hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-1 text-center">Open</a>
+                                    <?php if($todo->createdBy->id === auth()->user()->id || $group->MadeBy->id === auth()->user()->id): ?>
+                                       <a href="#" class="text-blue-700 hover:text-white hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1 text-center">Edit</a>
+                                       {{-- <a href="#" class="text-red-700 hover:text-white hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-1 text-center">Delete</a> --}}
+
+                                       <form method="POST" action="{{ route('deleteTo-Do', ['todo' => $todo]) }}">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" value="delete" class="text-red-700 hover:text-white hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-1 text-center">Delete</button>
+                                      </form>
+                                    <?php endif; ?>
                                  </div>
                            </td>
                            <td class="w-1/12 p-4">
+                              <?php if($todo->forUser->id === auth()->user()->id): ?>
                                  <div class="flex items-center">
                                     <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                                     <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                                  </div>
+                              <?php endif; ?>
                            </td>
                         </tr>
                      </tbody>
@@ -98,7 +114,7 @@
                 <?php endif; ?>
                
                 <?php if($group->Members->count() !== 1): ?>
-                  <a href="{{ route('createTo-Do', $group) }}"" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
+                  <a href="{{ route('createTo-Do', $group) }}" class=" text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center">
                      <span class="flex-1 whitespace-nowrap">Create To-Do</span>
                   </a>
                 <?php else: ?>

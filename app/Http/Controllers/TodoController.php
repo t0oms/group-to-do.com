@@ -81,6 +81,7 @@ class TodoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Todo::findOrfail($id)->delete();
+        return back();
     }
 }

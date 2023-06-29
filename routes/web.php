@@ -58,6 +58,8 @@ Route::get('/group/{group}/to-do/create', [TodoController::class, 'create'])->na
 
 Route::post('/group/{group}/to-do/store', [TodoController::class, 'store'])->name('storeTo-Do');
 
+Route::delete('/to-do/{todo}', [TodoController::class, 'destroy'])->name('deleteTo-Do');
+
 
 
 

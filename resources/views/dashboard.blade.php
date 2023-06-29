@@ -85,10 +85,18 @@
         <ul class="grid grid-cols-3 gap-8 mb-4">
             @foreach ($groups as $group)
                 <li>
-                    <a href="{{ route('showGroup', ['group' => $group->id]) }}" class="h-40 block max-w-sm p-6 bg-white border-2 border-gray-200 rounded-md shadow-lg hover:bg-gray-200">
+                    <?php if($group->MadeBy->id === auth()->user()->id): ?>
+                        <a href="{{ route('showGroup', ['group' => $group->id]) }}" class="h-40 block max-w-sm p-6 bg-white border-2 border-green-500 rounded-md shadow-lg hover:bg-gray-200">
+                    <?php else: ?>
+                        <a href="{{ route('showGroup', ['group' => $group->id]) }}" class="h-40 block max-w-sm p-6 bg-white border-2 border-gray-200 rounded-md shadow-lg hover:bg-gray-200">
+                    <?php endif; ?>
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $group->name }}</h5>
                         <p class="text-sm text-gray-500 truncate">made by: 
-                        <span class="text-sm font-medium text-gray-900 truncate">{{ $group->MadeBy->name }}</span></p>
+                        <?php if($group->MadeBy->id === auth()->user()->id): ?>
+                            <span class="text-sm font-medium text-gray-900 truncate">You</span></p>
+                        <?php else: ?>
+                            <span class="text-sm font-medium text-gray-900 truncate">{{ $group->MadeBy->name }}</span></p>
+                        <?php endif; ?>
                     </a>
                 </li>
             @endforeach
