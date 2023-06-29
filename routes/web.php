@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Group_UserController;
 use App\Http\Controllers\InviteController;
-use App\Http\Controllers\To_DoController;
+use App\Http\Controllers\TodoController;
 
 
 
@@ -54,9 +54,9 @@ Route::get('/invites', [InviteController::class, 'index'])->name('indexInvites')
 
 Route::delete('/invite/{invite}', [InviteController::class, 'destroy'])->name('deleteInvite'); 
 
-Route::get('/group/{group}/to-do/create', [To_DoController::class, 'create'])->name('createTo-Do');
+Route::get('/group/{group}/to-do/create', [TodoController::class, 'create'])->name('createTo-Do');
 
-Route::post('/group/{group}/to-do/store', [To_DoController::class, 'store'])->name('storeTo-Do');
+Route::post('/group/{group}/to-do/store', [TodoController::class, 'store'])->name('storeTo-Do');
 
 
 

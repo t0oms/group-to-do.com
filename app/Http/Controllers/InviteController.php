@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\User;
 use App\Models\Invite;
-use App\Models\To_do;
+use App\Models\Todo;
 
 
 class InviteController extends Controller
