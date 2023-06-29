@@ -70,11 +70,11 @@
                  <span class="flex-1 ml-3 whitespace-nowrap">Invites</span>
               </a>
            </li>
-           <li>
+           {{-- <li>
               <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200">
                  <span class="flex-1 ml-3 whitespace-nowrap">Your To-Dos</span>
               </a>
-           </li>
+           </li> --}}
            
         </ul>
      </div>

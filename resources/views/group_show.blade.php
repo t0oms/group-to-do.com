@@ -74,7 +74,7 @@
                            
                            <td class="px-3 py-4 w-1/12">
                                  <div>
-                                    <a href="#" class="text-green-700 hover:text-white hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-1 text-center">Open</a>
+                                    {{-- <a href="#" class="text-green-700 hover:text-white hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-1 text-center">Open</a> --}}
                                     <?php if($todo->createdBy->id === auth()->user()->id || $group->MadeBy->id === auth()->user()->id): ?>
                                        <a href="{{ route('editTo-Do', $todo) }}" class="text-blue-700 hover:text-white hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1 text-center">Edit</a>
                                        {{-- <a href="#" class="text-red-700 hover:text-white hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-1 text-center">Delete</a> --}}

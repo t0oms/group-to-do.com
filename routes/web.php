@@ -7,6 +7,8 @@ use App\Http\Controllers\Group_UserController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\TodoController;
 
+use App\Http\Middleware\IsAdminMiddleware;
+
 
 
 
@@ -22,6 +24,11 @@ use App\Http\Controllers\TodoController;
 |
 */
 
+
+
+// Route::get('/admin-page', function () {
+//     return view('admin_dashboard');
+// })->middleware('is_admin');
 
 Route::get('/', function () {
     return view('welcome');

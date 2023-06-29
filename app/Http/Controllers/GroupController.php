@@ -35,6 +35,13 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $rules = [
+        //     'group_name' => 'required|min:|max:30',
+        // ];
+
+        // $validatedData = $request->validate($rules);
+
         $user = auth()->user();
         
         $group = new Group();
@@ -95,43 +102,5 @@ class GroupController extends Controller
         return redirect()->route('indexGroups');
     }
 
-    // public function inviteUsers(string $id, Request $request)
-    // {
-    //     $group = Group::findOrFail($id);
-    //     $searchQuery = $request->input('search_query');
 
-    //     // Retrieve the top 20 users if no search query is provided
-    //     if (empty($searchQuery)) {
-    //         $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
-    //             ->orderBy('id', 'desc')
-    //             ->take(20)
-    //             ->get();
-    //     } else {
-    //         // Retrieve users based on the search query, excluding the authenticated user
-    //         $users = User::where('id', '!=', auth()->user()->id) // Exclude the authenticated user
-    //             ->where('name', 'like', '%' . $searchQuery . '%')
-    //             ->get();
-    //     }
-
-    //     return view('group_invite_users', compact('group', 'users', 'searchQuery'));
-    // }
-
-
-    // public function storeUser(Group $group, User $user)
-    // {
-    //     $group->members()->attach($user);
-    //     return back();
-    // }
-    // public function showMembers(string $id)
-    // {
-    //     $group = Group::findOrFail($id);
-    //     $members = $group->members->reject(function ($member) {
-    //         return $member->id === auth()->user()->id;
-    //     });
-
-        
-
-    //     return view('group_members', compact('members', 'group'));
-
-    // }
 }
