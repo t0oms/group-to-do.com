@@ -1,6 +1,6 @@
 # group-to-do.com
 
-The main functionality of this website is to allow users to create groups where users assign each other tasks. Users assign each other "to-dos," which are tasks to be done by a specific user. Each to-do consists of a title, a short description, the user who created the to-do, and the user for whom the to-do is intended.
+The main functionality of this website is to allow users to create groups where they assign each other tasks. Tasks are assigned in the form of "to-dos," which are tasks to be done by a specific user. Each to-do consists of a title, a short description, the user who created the to-do, and the user for whom the to-do is intended.
 
 ## Dashboard
 When entering the website, the user sees a dashboard that contains all the groups in which the user is a member. Groups created by this user are highlighted in green.
