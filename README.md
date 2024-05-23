@@ -9,7 +9,7 @@ When entering the website, the user sees a dashboard that contains all the group
 
 ### New Group
 
-By clicking on the "New Group" button, a form opens where the name of the new group must be specified.
+By clicking on the "New Group" button, a form opens where the name of the new group must be specified. When the "Create" button is clicked, a new group empty group with no other members is created and added to their dashboard.
 
 ![2  create group view](https://github.com/t0oms/group-to-do.com/assets/66429919/b9d2cf19-94e5-4ee5-962d-706ae3c598f8)
 
