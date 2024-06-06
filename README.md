@@ -59,4 +59,4 @@ By clicking on the "Invite Members" button, the "Add Users" form opens, where th
 
 - This project was developed by Toms Pētersons.
 - The project was created as the final project for the University of Latvia's Web Technologies II course.
-- Main technologies used: Laravel, MySQL, Tailwind
+- Main technologies used: Laravel, MySQL, Tailwind, Nginx
